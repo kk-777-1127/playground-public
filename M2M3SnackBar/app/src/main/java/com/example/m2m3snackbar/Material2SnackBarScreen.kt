@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 fun Material2SnackBarScreen(modifier: Modifier = Modifier) {
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
-    var showIcon by remember { mutableStateOf(true) }
+    var showIcon by remember { mutableStateOf(false) }
     
     Scaffold(
         modifier = modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),

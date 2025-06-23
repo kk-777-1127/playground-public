@@ -1,8 +1,6 @@
 package com.example.m2m3snackbar
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -14,7 +12,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Material3SnackBarScreen(modifier: Modifier = Modifier) {
+fun CustomMaterial3SnackBarScreen(modifier: Modifier = Modifier) {
     val snackbarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
     var showIcon by remember { mutableStateOf(false) }
@@ -22,30 +20,10 @@ fun Material3SnackBarScreen(modifier: Modifier = Modifier) {
     Scaffold(
         modifier = modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing),
         snackbarHost = {
-            SnackbarHost(
+            CustomMaterial3SnackBarHost(
                 hostState = snackbarHostState,
-                modifier = Modifier.fillMaxWidth()
-            ) { snackbarData ->
-                Snackbar(
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp, vertical = 12.dp)
-                        .widthIn(max = 700.dp),
-                ) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                    ) {
-                        if (showIcon) {
-                            Icon(
-                                Icons.Default.Info,
-                                contentDescription = null,
-                                modifier = Modifier.padding(bottom = 4.dp)
-                            )
-                        }
-                        Text(snackbarData.visuals.message)
-                    }
-                }
-            }
+                showIcon = showIcon
+            )
         }
     ) { innerPadding ->
         Column(
@@ -57,7 +35,7 @@ fun Material3SnackBarScreen(modifier: Modifier = Modifier) {
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Text(
-                text = "Material 3 SnackBar Test",
+                text = "Custom Material 3 SnackBar Test",
                 style = MaterialTheme.typography.headlineSmall
             )
             
@@ -128,8 +106,8 @@ fun Material3SnackBarScreen(modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun Material3SnackBarScreenPreview() {
+fun CustomMaterial3SnackBarScreenPreview() {
     M2M3SnackBarTheme {
-        Material3SnackBarScreen()
+        CustomMaterial3SnackBarScreen()
     }
 }

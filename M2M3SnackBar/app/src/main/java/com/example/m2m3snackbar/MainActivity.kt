@@ -62,6 +62,15 @@ fun MainScreen(modifier: Modifier = Modifier) {
                     }
                     
                     Button(
+                        onClick = { currentScreen = "custom_material3" },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 16.dp)
+                    ) {
+                        Text("Custom Material 3 SnackBar")
+                    }
+                    
+                    Button(
                         onClick = { currentScreen = "material2" },
                         modifier = Modifier.fillMaxWidth()
                     ) {
@@ -72,6 +81,15 @@ fun MainScreen(modifier: Modifier = Modifier) {
         }
         "material3" -> {
             Material3SnackBarScreen(
+                modifier = Modifier.fillMaxSize()
+            )
+            
+            BackHandler {
+                currentScreen = "main"
+            }
+        }
+        "custom_material3" -> {
+            CustomMaterial3SnackBarScreen(
                 modifier = Modifier.fillMaxSize()
             )
             
