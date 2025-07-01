@@ -22,35 +22,42 @@ fun CustomMaterial3SnackBar(
     backgroundColor: Color = MaterialTheme.colorScheme.inverseSurface,
     contentColor: Color = MaterialTheme.colorScheme.inverseOnSurface,
 ) {
-    Box(
+    Surface(
         modifier = modifier
             .padding(horizontal = 8.dp, vertical = 12.dp)
-            .widthIn(max = 700.dp)
-            .clip(RoundedCornerShape(4.dp))
-            .background(backgroundColor)
-            .padding(horizontal = 16.dp, vertical = 14.dp),
-        contentAlignment = Alignment.Center
+            .widthIn(max = 700.dp),
+        shape = RoundedCornerShape(4.dp),
+        color = backgroundColor,
+        contentColor = contentColor,
+        tonalElevation = 6.dp // 標準Snackbarと同じ Level 3の値
     ) {
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(4.dp)
+        Box(
+            modifier = modifier
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            contentAlignment = Alignment.Center
         ) {
-            if (showIcon) {
-                Icon(
-                    Icons.Default.Info,
-                    contentDescription = null,
-                    tint = contentColor,
-                    modifier = Modifier.size(20.dp)
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(4.dp)
+            ) {
+                if (showIcon) {
+                    Icon(
+                        Icons.Default.Info,
+                        contentDescription = null,
+                        tint = contentColor,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+                Text(
+                    text = message,
+                    color = contentColor,
+                    style = MaterialTheme.typography.bodyMedium,
+                    textAlign = TextAlign.Center
                 )
             }
-            Text(
-                text = message,
-                color = contentColor,
-                style = MaterialTheme.typography.bodyMedium,
-                textAlign = TextAlign.Center
-            )
         }
+
     }
 }
 
